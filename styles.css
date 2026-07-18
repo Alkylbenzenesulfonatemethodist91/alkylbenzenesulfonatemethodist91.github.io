@@ -140,7 +140,7 @@ main {
   margin: 0;
   font-family: "Syne", sans-serif;
   line-height: 0.98;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .hero h1 {
@@ -395,6 +395,37 @@ main {
   margin-top: 18px;
 }
 
+.repo-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.repo-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.repo-link:hover {
+  transform: translateX(3px);
+  border-color: rgba(121, 231, 255, 0.28);
+  background: rgba(121, 231, 255, 0.08);
+}
+
+.repo-link span:first-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .tag {
   padding: 8px 12px;
   border-radius: 999px;
@@ -404,7 +435,6 @@ main {
   font-size: 0.84rem;
 }
 
-.project-link,
 .link-card a {
   display: inline-flex;
   align-items: center;

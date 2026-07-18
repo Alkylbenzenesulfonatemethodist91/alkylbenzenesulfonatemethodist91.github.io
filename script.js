@@ -1,50 +1,74 @@
 const profile = {
   name: "Haoyang Chen",
-  focus: "AI systems and engineering",
+  focus: "Robotics, RL, optimization, and visual AI",
   location: "Shanghai / UTC+8",
-  status: "Available for interesting collaborations",
+  status: "16 public repositories organized by research direction",
   rotatingCards: [
     {
-      title: "Engineer",
-      summary: "Building practical tools with strong visual presence and clear interaction."
+      title: "Robotics",
+      summary: "Manipulation, planning, SDK driver work, and motion-generation experiments connected to robot workflows."
     },
     {
-      title: "Research-minded",
-      summary: "Exploring applied AI, software systems, and product-grade implementation."
+      title: "Safe RL",
+      summary: "Hierarchical reinforcement learning projects around reach-avoid, constraints, PPO, and reward shaping."
     },
     {
-      title: "Builder",
-      summary: "Turning complex technical work into polished demos, readable interfaces, and useful experiences."
+      title: "Optimization",
+      summary: "Algorithmic repositories covering two-stage optimization, cutting optimization, and constrained planning."
+    },
+    {
+      title: "Vision AI",
+      summary: "Computer-vision experiments including EfficientNet and FPN-based generated-image detection."
     }
   ],
   projects: [
     {
-      title: "GitHub Profile",
+      title: "Robotics and Motion Planning",
       description:
-        "Use this card to route visitors to your main GitHub profile, pinned repositories, or contribution graph.",
-      href: "https://github.com/haoyangc2001",
-      tags: ["GitHub", "Profile", "Open Source"]
+        "Robot-facing projects covering manipulation, cuRobo demos, SDK driver work, and level-constrained planning.",
+      tags: ["Robotics", "Manipulation", "Planning"],
+      repos: [
+        ["tashan_Manipulation", "https://github.com/haoyangc2001/tashan_Manipulation"],
+        ["curoboV2_demo", "https://github.com/haoyangc2001/curoboV2_demo"],
+        ["SR5_SDK_Driver", "https://github.com/haoyangc2001/SR5_SDK_Driver"],
+        ["levelConstrainedPlanning", "https://github.com/haoyangc2001/levelConstrainedPlanning"]
+      ]
     },
     {
-      title: "Featured Project",
+      title: "Hierarchical Reach-Avoid RL",
       description:
-        "Replace this with a real repository, demo site, or case study. Keep the description short and concrete.",
-      href: "https://github.com/haoyangc2001?tab=repositories",
-      tags: ["Repo", "Demo", "Case Study"]
+        "A focused cluster around Go2 hierarchical reinforcement learning, reach-avoid objectives, min-cost variants, constrained PPO, and reward shaping.",
+      tags: ["Reinforcement Learning", "Go2", "Safety"],
+      repos: [
+        ["Go2HierarchicalReachAvoidRL", "https://github.com/haoyangc2001/Go2HierarchicalReachAvoidRL"],
+        ["Go2HierarchicalMiniCostReachAvoid", "https://github.com/haoyangc2001/Go2HierarchicalMiniCostReachAvoid"],
+        ["Go2HierarchicalConstrainedPPORL", "https://github.com/haoyangc2001/Go2HierarchicalConstrainedPPORL"],
+        ["Go2HierarchicalRewardShapingRL", "https://github.com/haoyangc2001/Go2HierarchicalRewardShapingRL"]
+      ]
     },
     {
-      title: "Writing or Notes",
+      title: "Optimization and Decision Systems",
       description:
-        "If you publish posts, lab notes, or technical essays, give them a direct entry point here.",
-      href: "https://github.com/haoyangc2001",
-      tags: ["Writing", "Notes", "Ideas"]
+        "Planning and optimization repositories that suggest work on route planning, two-stage optimization, and production-style decision algorithms.",
+      tags: ["Optimization", "Routing", "Planning"],
+      repos: [
+        ["AGCTwoStageOptimization", "https://github.com/haoyangc2001/AGCTwoStageOptimization"],
+        ["PSS-OptCut", "https://github.com/haoyangc2001/PSS-OptCut"],
+        ["WeatherVehicleRoutePlan_RL", "https://github.com/haoyangc2001/WeatherVehicleRoutePlan_RL"],
+        ["HDMCRA", "https://github.com/haoyangc2001/HDMCRA"]
+      ]
     },
     {
-      title: "Contact Channel",
+      title: "AI, Timing, and Perception",
       description:
-        "Use one clean path for people who want to collaborate, hire, or continue a technical conversation.",
-      href: "mailto:your-email@example.com",
-      tags: ["Email", "Contact", "Collab"]
+        "Supporting projects around algorithm evolution, core timing, applied AI, and generated-image detection.",
+      tags: ["AI", "Computer Vision", "Tools"],
+      repos: [
+        ["openEvolveCX", "https://github.com/haoyangc2001/openEvolveCX"],
+        ["FAIA", "https://github.com/haoyangc2001/FAIA"],
+        ["coretiming", "https://github.com/haoyangc2001/coretiming"],
+        ["EfficientNet_FPN_generateImageDetection", "https://github.com/haoyangc2001/EfficientNet_FPN_generateImageDetection"]
+      ]
     }
   ],
   links: [
@@ -55,16 +79,16 @@ const profile = {
       label: "Open profile"
     },
     {
-      title: "LinkedIn",
-      description: "Replace with your public professional profile.",
-      href: "https://www.linkedin.com/",
-      label: "Open LinkedIn"
+      title: "All Repositories",
+      description: "Complete public repository list, including the latest updates.",
+      href: "https://github.com/haoyangc2001?tab=repositories",
+      label: "Browse repos"
     },
     {
-      title: "Resume",
-      description: "Point this to a PDF or another public page.",
-      href: "#",
-      label: "Add resume link"
+      title: "Personal Website Source",
+      description: "Source code for this GitHub Pages homepage.",
+      href: "https://github.com/haoyangc2001/haoyangc2001.github.io",
+      label: "View source"
     },
     {
       title: "Email",
@@ -90,15 +114,24 @@ statusLine.textContent = profile.status;
 profile.projects.forEach((project) => {
   const article = document.createElement("article");
   article.className = "project-card";
+  const repoLinks = project.repos
+    .map(
+      ([name, href]) => `
+        <a class="repo-link" href="${href}" target="_blank" rel="noreferrer">
+          <span>${name}</span>
+          <span aria-hidden="true">open</span>
+        </a>
+      `
+    )
+    .join("");
+
   article.innerHTML = `
     <h3>${project.title}</h3>
     <p>${project.description}</p>
     <div class="project-meta">
       ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
     </div>
-    <a class="project-link" href="${project.href}" target="_blank" rel="noreferrer">
-      Visit destination
-    </a>
+    <div class="repo-list">${repoLinks}</div>
   `;
   projectGrid.appendChild(article);
 });

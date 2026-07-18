@@ -2,6 +2,13 @@
 
 Static GitHub Pages site for `https://haoyangc2001.github.io/`.
 
+The homepage groups public repositories into project clusters:
+
+- Robotics and motion planning
+- Hierarchical reach-avoid reinforcement learning
+- Optimization and decision systems
+- AI, timing, and perception
+
 ## Files
 
 - `index.html`: page structure
@@ -10,11 +17,11 @@ Static GitHub Pages site for `https://haoyangc2001.github.io/`.
 
 ## What to edit first
 
-Open `script.js` and replace:
+Open `script.js` to update:
 
 - `location`
 - `status`
-- `projects`
+- repository groups in `projects`
 - `links`
 - `mailto:your-email@example.com`
 
