@@ -159,13 +159,13 @@ main {
   margin-top: 18px;
 }
 
-.compact-education {
+.compact-history {
   margin-top: 30px;
   padding-top: 18px;
   border-top: 1px solid var(--line);
 }
 
-.compact-education h2 {
+.compact-history h2 {
   margin: 0 0 10px;
   color: var(--muted);
   font-size: 0.82rem;
@@ -173,7 +173,7 @@ main {
   letter-spacing: 0.08em;
 }
 
-.compact-education p {
+.compact-history p {
   display: grid;
   grid-template-columns: 170px 1fr;
   gap: 16px;
@@ -184,7 +184,7 @@ main {
   line-height: 1.5;
 }
 
-.compact-education strong {
+.compact-history strong {
   color: var(--text);
   font-weight: 500;
 }
@@ -344,7 +344,7 @@ main {
     padding: 56px 0;
   }
 
-  .compact-education p {
+  .compact-history p {
     grid-template-columns: 1fr;
     gap: 3px;
   }
