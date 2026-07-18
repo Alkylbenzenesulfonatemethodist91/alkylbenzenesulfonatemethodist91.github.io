@@ -144,8 +144,11 @@ main {
   margin: 0;
 }
 
+.profile-details .profile-address {
+  margin-top: 14px;
+}
+
 .profile-details a {
-  width: fit-content;
   color: var(--text);
   border-bottom: 1px solid var(--line);
 }
