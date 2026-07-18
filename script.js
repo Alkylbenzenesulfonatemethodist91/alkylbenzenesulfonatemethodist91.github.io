@@ -1,24 +1,24 @@
 const profile = {
-  name: "Haoyang Chen",
-  focus: "Robotics, RL, optimization, and visual AI",
-  location: "Shanghai / UTC+8",
-  status: "16 public repositories organized by research direction",
+  name: "曹豪洋",
+  focus: "Deep RL, planning, motion control, and VLA",
+  location: "UCAS / State Key Lab of Computer Science",
+  status: "haoyangc2001@163.com",
   rotatingCards: [
     {
-      title: "Robotics",
-      summary: "Manipulation, planning, SDK driver work, and motion-generation experiments connected to robot workflows."
+      title: "Deep RL",
+      summary: "PPO, DDPG, TD3, SAC, hierarchical policies, and safety-aware decision planning."
     },
     {
-      title: "Safe RL",
-      summary: "Hierarchical reinforcement learning projects around reach-avoid, constraints, PPO, and reward shaping."
+      title: "Robot Learning",
+      summary: "RL-based decision planning and motion control for manipulation and embodied systems."
     },
     {
-      title: "Optimization",
-      summary: "Algorithmic repositories covering two-stage optimization, cutting optimization, and constrained planning."
+      title: "VLA",
+      summary: "Vision-language-action model foundations including ViT, CLIP, Transformer, OpenVLA, and Pi-style policies."
     },
     {
-      title: "Vision AI",
-      summary: "Computer-vision experiments including EfficientNet and FPN-based generated-image detection."
+      title: "AI Coding",
+      summary: "Reusable LLM and Agent engineering workflows built around RAG, MCP, Skills, and automation harnesses."
     }
   ],
   projects: [
@@ -92,8 +92,8 @@ const profile = {
     },
     {
       title: "Email",
-      description: "Best direct path for serious outreach.",
-      href: "mailto:your-email@example.com",
+      description: "Academic and collaboration contact.",
+      href: "mailto:haoyangc2001@163.com",
       label: "Send email"
     }
   ]

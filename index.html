@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Haoyang Chen | Robotics, RL, Optimization</title>
+    <title>曹豪洋 | Reinforcement Learning, Robotics, VLA</title>
     <meta
       name="description"
-      content="Portfolio homepage for Haoyang Chen, focused on robotics, constrained planning, reinforcement learning, optimization, and visual AI."
+      content="曹豪洋的个人主页，研究方向包括深度强化学习、决策规划、运动控制、VLA 和 AI coding 工作流。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,37 +21,38 @@
     <div class="noise" aria-hidden="true"></div>
 
     <header class="site-header">
-      <a class="brand" href="#top">HC</a>
+      <a class="brand" href="#top">CH</a>
       <nav class="top-nav">
         <a href="#about">About</a>
+        <a href="#education">Education</a>
         <a href="#work">Work</a>
-        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="top">
       <section class="hero section">
         <div class="hero-copy">
-          <p class="eyebrow">Robotics / RL / Optimization / Visual AI</p>
+          <p class="eyebrow">Reinforcement Learning / Robotics / VLA / AI Coding</p>
           <h1>
-            Haoyang Chen
-            <span class="gradient-text">turns planning, control, and AI ideas into working systems.</span>
+            曹豪洋
+            <span class="gradient-text">Haoyang Cao</span>
           </h1>
           <p class="lede">
-            A curated map of public projects across robot manipulation,
-            safety-constrained planning, hierarchical reinforcement learning,
-            optimization, and computer vision.
+            中国科学院大学电子信息硕士研究生，关注深度强化学习、
+            基于强化学习的决策规划与运动控制，以及 Vision-Language-Action
+            模型在机器人任务中的落地。
           </p>
 
           <div class="hero-actions">
-            <a class="button button-primary" href="#work">Explore Repositories</a>
-            <a class="button button-ghost" href="https://github.com/haoyangc2001" target="_blank" rel="noreferrer">Open GitHub</a>
+            <a class="button button-primary" href="#work">View Repositories</a>
+            <a class="button button-ghost" href="mailto:haoyangc2001@163.com">Email Me</a>
           </div>
 
           <ul class="signal-list">
-            <li><span class="signal-label">Focus</span><span id="focus-line">AI systems and engineering</span></li>
-            <li><span class="signal-label">Base</span><span id="location-line">Update with your city or timezone</span></li>
-            <li><span class="signal-label">Status</span><span id="status-line">Available for interesting collaborations</span></li>
+            <li><span class="signal-label">Focus</span><span id="focus-line">Deep RL, planning, motion control</span></li>
+            <li><span class="signal-label">Affiliation</span><span id="location-line">UCAS / State Key Lab of Computer Science</span></li>
+            <li><span class="signal-label">Email</span><span id="status-line">haoyangc2001@163.com</span></li>
           </ul>
         </div>
 
@@ -64,27 +65,27 @@
               <span class="dot"></span>
             </div>
             <div class="panel-body">
-              <p class="panel-kicker">Project graph</p>
-              <h2 id="rotating-title">Robotics</h2>
+              <p class="panel-kicker">Research profile</p>
+              <h2 id="rotating-title">Deep RL</h2>
               <p id="rotating-summary">
-                Manipulation, planning, and motion-generation experiments connected to real robot workflows.
+                PPO, DDPG, TD3, SAC, hierarchical policies, and safety-aware decision planning.
               </p>
               <div class="stat-grid">
                 <article>
-                  <span class="stat-number">16</span>
-                  <span class="stat-label">Public repos mapped</span>
-                </article>
-                <article>
-                  <span class="stat-number">05</span>
-                  <span class="stat-label">Research directions</span>
+                  <span class="stat-number">2024</span>
+                  <span class="stat-label">UCAS master entry</span>
                 </article>
                 <article>
                   <span class="stat-number">RL</span>
-                  <span class="stat-label">Safety-aware learning</span>
+                  <span class="stat-label">Decision planning</span>
                 </article>
                 <article>
-                  <span class="stat-number">CV</span>
-                  <span class="stat-label">Detection pipelines</span>
+                  <span class="stat-number">VLA</span>
+                  <span class="stat-label">Vision-language-action</span>
+                </article>
+                <article>
+                  <span class="stat-number">Agent</span>
+                  <span class="stat-label">AI coding workflows</span>
                 </article>
               </div>
             </div>
@@ -95,29 +96,59 @@
       <section class="section about" id="about">
         <div class="section-heading">
           <p class="eyebrow">About</p>
-          <h2>Public work organized around systems that move, decide, and optimize.</h2>
+          <h2>Research-oriented engineering profile.</h2>
         </div>
         <div class="about-grid">
           <article class="card">
-            <h3>Robotics systems</h3>
+            <h3>Research Interests</h3>
             <p>
-              Manipulation, planning, SDK drivers, and cuRobo-related demos form
-              the hardware-facing side of the portfolio.
+              Deep reinforcement learning, RL-based decision planning and
+              motion control, VLA models, and robot learning systems.
             </p>
           </article>
           <article class="card">
-            <h3>Learning and constraints</h3>
+            <h3>Technical Skills</h3>
             <p>
-              Several repositories explore hierarchical RL, reach-avoid
-              objectives, constrained PPO, reward shaping, and weather-aware routing.
+              RL algorithms including PPO, DDPG, TD3, and SAC; VLA foundations
+              including ViT, CLIP, Transformer, OpenVLA, and Pi-style models.
             </p>
           </article>
           <article class="card">
-            <h3>Optimization and perception</h3>
+            <h3>Engineering Systems</h3>
             <p>
-              Optimization projects and EfficientNet-FPN detection work round
-              out the profile with algorithmic and visual intelligence.
+              ROS/ROS2, Isaac Gym/Sim/Lab, Gazebo, and LLM/Agent workflows
+              built with RAG, MCP, Skills, and Harness-style automation.
             </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section education" id="education">
+        <div class="section-heading">
+          <p class="eyebrow">Education</p>
+          <h2>Academic background and selected recognition.</h2>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">2024.09 - 2027.06</div>
+            <div>
+              <h3>中国科学院大学</h3>
+              <p>电子信息硕士研究生，保送录取；计算机科学国家重点实验室。</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">2020.09 - 2024.06</div>
+            <div>
+              <h3>济南大学</h3>
+              <p>工业工程学士，专业排名 1/205；获得国家奖学金、国家励志奖学金和多项校级奖学金。</p>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-date">Selected</div>
+            <div>
+              <h3>Honors</h3>
+              <p>曾获省优秀学生、市优秀志愿者、校优秀党员团员、校优秀干部，以及多项创新竞赛奖项。</p>
+            </div>
           </article>
         </div>
       </section>
@@ -125,22 +156,22 @@
       <section class="section work" id="work">
         <div class="section-heading">
           <p class="eyebrow">Featured Work</p>
-          <h2>Repository clusters route visitors directly to the relevant code.</h2>
+          <h2>Repository clusters connected to research directions.</h2>
         </div>
         <div class="project-grid" id="project-grid"></div>
       </section>
 
-      <section class="section links" id="links">
+      <section class="section links" id="contact">
         <div class="section-heading">
-          <p class="eyebrow">Links</p>
-          <h2>Primary routes for profile, repositories, and contact.</h2>
+          <p class="eyebrow">Contact</p>
+          <h2>Primary routes for profile, repositories, and academic contact.</h2>
         </div>
         <div class="link-grid" id="link-grid"></div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <p>Built for GitHub Pages. Edit once, deploy as static files.</p>
+      <p>曹豪洋 · GitHub Pages · haoyangc2001@163.com</p>
     </footer>
 
     <script src="./script.js"></script>
