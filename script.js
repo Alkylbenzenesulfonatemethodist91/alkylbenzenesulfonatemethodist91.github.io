@@ -1,26 +1,5 @@
 const profile = {
   name: "曹豪洋",
-  focus: "Deep RL, planning, motion control, and VLA",
-  location: "UCAS / State Key Lab of Computer Science",
-  status: "haoyangc2001@163.com",
-  rotatingCards: [
-    {
-      title: "Deep RL",
-      summary: "PPO, DDPG, TD3, SAC, hierarchical policies, and safety-aware decision planning."
-    },
-    {
-      title: "Robot Learning",
-      summary: "RL-based decision planning and motion control for manipulation and embodied systems."
-    },
-    {
-      title: "VLA",
-      summary: "Vision-language-action model foundations including ViT, CLIP, Transformer, OpenVLA, and Pi-style policies."
-    },
-    {
-      title: "AI Coding",
-      summary: "Reusable LLM and Agent engineering workflows built around RAG, MCP, Skills, and automation harnesses."
-    }
-  ],
   projects: [
     {
       title: "Robotics and Motion Planning",
@@ -99,17 +78,8 @@ const profile = {
   ]
 };
 
-const focusLine = document.getElementById("focus-line");
-const locationLine = document.getElementById("location-line");
-const statusLine = document.getElementById("status-line");
-const rotatingTitle = document.getElementById("rotating-title");
-const rotatingSummary = document.getElementById("rotating-summary");
 const projectGrid = document.getElementById("project-grid");
 const linkGrid = document.getElementById("link-grid");
-
-focusLine.textContent = profile.focus;
-locationLine.textContent = profile.location;
-statusLine.textContent = profile.status;
 
 profile.projects.forEach((project) => {
   const article = document.createElement("article");
@@ -146,54 +116,3 @@ profile.links.forEach((link) => {
   `;
   linkGrid.appendChild(article);
 });
-
-let cardIndex = 0;
-
-function rotateCard() {
-  cardIndex = (cardIndex + 1) % profile.rotatingCards.length;
-  const item = profile.rotatingCards[cardIndex];
-  rotatingTitle.textContent = item.title;
-  rotatingSummary.textContent = item.summary;
-}
-
-setInterval(rotateCard, 2600);
-
-const canvas = document.getElementById("starfield");
-const context = canvas.getContext("2d");
-let stars = [];
-
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const starCount = Math.min(140, Math.floor(window.innerWidth / 10));
-  stars = Array.from({ length: starCount }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.4 + 0.2,
-    speed: Math.random() * 0.18 + 0.04,
-    alpha: Math.random() * 0.6 + 0.2
-  }));
-}
-
-function drawStars() {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-
-  for (const star of stars) {
-    context.beginPath();
-    context.fillStyle = `rgba(170, 224, 255, ${star.alpha})`;
-    context.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    context.fill();
-
-    star.y += star.speed;
-    if (star.y > canvas.height + 10) {
-      star.y = -10;
-      star.x = Math.random() * canvas.width;
-    }
-  }
-
-  requestAnimationFrame(drawStars);
-}
-
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-drawStars();
