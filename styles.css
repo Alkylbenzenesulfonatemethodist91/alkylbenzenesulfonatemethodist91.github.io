@@ -150,29 +150,10 @@ main {
   border-bottom: 1px solid var(--line);
 }
 
-.research-lines {
+.research-details {
   display: grid;
-  margin-top: 52px;
-  border-top: 1px solid var(--line);
-}
-
-.research-lines > div {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.research-lines span {
-  color: var(--muted);
-  font-size: 0.82rem;
-  letter-spacing: 0.08em;
-}
-
-.research-lines p {
-  margin: 0;
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  gap: 7px;
+  margin-top: 18px;
 }
 
 .hero-actions {
@@ -374,11 +355,6 @@ main {
 
   .section {
     padding: 56px 0;
-  }
-
-  .research-lines > div {
-    grid-template-columns: 1fr;
-    gap: 8px;
   }
 
   .card,
