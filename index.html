@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Haoyang Chen | Portal</title>
+    <meta
+      name="description"
+      content="Interactive portfolio landing page for Haoyang Chen."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#top">HC</a>
+      <nav class="top-nav">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#links">Links</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section">
+        <div class="hero-copy">
+          <p class="eyebrow">Digital identity / developer page / external hub</p>
+          <h1>
+            Haoyang Chen
+            <span class="gradient-text">builds polished systems with a cinematic front door.</span>
+          </h1>
+          <p class="lede">
+            This page is designed as a fast personal portal: a memorable intro,
+            a small set of strong signals, and clean jumps to the places that matter.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#links">Open My Links</a>
+            <a class="button button-ghost" href="#work">See Featured Work</a>
+          </div>
+
+          <ul class="signal-list">
+            <li><span class="signal-label">Focus</span><span id="focus-line">AI systems and engineering</span></li>
+            <li><span class="signal-label">Base</span><span id="location-line">Update with your city or timezone</span></li>
+            <li><span class="signal-label">Status</span><span id="status-line">Available for interesting collaborations</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-shell">
+            <div class="panel-glow"></div>
+            <div class="panel-head">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+            </div>
+            <div class="panel-body">
+              <p class="panel-kicker">Live intro</p>
+              <h2 id="rotating-title">Developer</h2>
+              <p id="rotating-summary">
+                Building practical tools with strong visual presence and clear interaction.
+              </p>
+              <div class="stat-grid">
+                <article>
+                  <span class="stat-number">01</span>
+                  <span class="stat-label">Personal brand</span>
+                </article>
+                <article>
+                  <span class="stat-number">02</span>
+                  <span class="stat-label">Project showcase</span>
+                </article>
+                <article>
+                  <span class="stat-number">03</span>
+                  <span class="stat-label">External routing</span>
+                </article>
+                <article>
+                  <span class="stat-number">04</span>
+                  <span class="stat-label">Static deploy</span>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>A homepage that feels intentional, not like a default template.</h2>
+        </div>
+        <div class="about-grid">
+          <article class="card">
+            <h3>What this is for</h3>
+            <p>
+              Use this site as the destination linked from your GitHub profile,
+              README, resume, email signature, and social accounts.
+            </p>
+          </article>
+          <article class="card">
+            <h3>What to customize</h3>
+            <p>
+              Replace the short bio, featured work, and external links in
+              <code>script.js</code>. The structure is already wired for you.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Why this design</h3>
+            <p>
+              The visual language aims for high contrast, motion, and clarity
+              without requiring any build tooling.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section work" id="work">
+        <div class="section-heading">
+          <p class="eyebrow">Featured Work</p>
+          <h2>Project tiles can route visitors straight to code, demos, or writing.</h2>
+        </div>
+        <div class="project-grid" id="project-grid"></div>
+      </section>
+
+      <section class="section links" id="links">
+        <div class="section-heading">
+          <p class="eyebrow">Links</p>
+          <h2>Use this block as the main navigation hub for your public identity.</h2>
+        </div>
+        <div class="link-grid" id="link-grid"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Built for GitHub Pages. Edit once, deploy as static files.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
