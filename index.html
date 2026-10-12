@@ -89,10 +89,10 @@ header.hero{margin-inline:-16px;padding:28px 16px 24px;background:var(--hero-bg)
 .main > .bld{padding:12px 4px;font-size:14px}
 .bld.hall-bar{background:var(--hall-bg);color:var(--hall-fg);font-style:italic;font-weight:800;font-size:16px;letter-spacing:.1em;padding:14px 4px}
 .field-name{padding-top:28px}
-.booths{display:grid;grid-template-columns:62px 1.2fr 1.5fr 1fr 1fr;gap:10px;align-items:end;margin-top:18px}
-.booth{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;text-align:center}
-.booth .bx{order:2;display:flex;align-items:center;justify-content:center;width:100%;max-width:92px;height:26px;border-radius:4px;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-size:11px;font-weight:600}
-.booth.photo .bx{width:26px;max-width:26px;background:var(--ink);border-color:var(--ink)}
+.booths{display:grid;grid-template-columns:52px 1.2fr 1.5fr 1fr 1fr;gap:10px;align-items:center;margin-top:18px}
+.booth{display:flex;align-items:center;justify-content:center;height:46px;padding:0 6px;border:1px solid var(--line);border-radius:4px;background:var(--paper);font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;text-align:center}
+.booth.stage{border:0;background:none;padding:0}
+.booth.photo{width:46px;padding:0;justify-self:center;background:var(--ink);border-color:var(--ink);color:var(--paper);font-size:10px}
 .field .booth.stage b{display:flex;align-items:center;justify-content:center;width:100%;height:46px;padding:0;border-radius:3px;font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.1em;background:repeating-linear-gradient(135deg,var(--ink) 0 7px,var(--muted) 7px 8px);color:var(--paper)}
 .row .t{position:relative;margin-bottom:18px}
 .row .t::after{content:"등록";position:absolute;left:50%;transform:translateX(-50%);bottom:-17px;font-size:10px;font-weight:700;line-height:1.4;background:var(--gold-bright);color:#3B2A06;padding:0 6px;border-radius:2px}
@@ -229,11 +229,11 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       <div class="mid">
         <div class="field"><span class="field-name">잔디운동장 83m × 66m</span>
           <div class="booths">
-            <div class="booth photo">인생네컷<span class="bx" aria-hidden="true"></span></div>
-            <div class="booth">경품교환처 · 의무실<span class="bx">1동</span></div>
+            <div class="booth photo">인생<br>네컷</div>
+            <div class="booth">경품교환처<br>의무실</div>
             <div class="booth stage"><b>무대</b></div>
-            <div class="booth">시스템부스<span class="bx">1동</span></div>
-            <div class="booth">상황실<span class="bx">1동</span></div>
+            <div class="booth">시스템부스</div>
+            <div class="booth">상황실</div>
           </div>
         </div>
         <div class="rcol" role="list" aria-label="오른쪽 천막 줄">
@@ -438,8 +438,8 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   var relay=[
     {no:"1조",who:"",names:["김웅배","유승빈","김진호","김민준","김예솔","이태림","전제찬","김수빈"]},
     {no:"2조",who:"",names:["이재성","허정","김예권","문찬혁","이한철","장남선","박병찬","이창현"]},
-    {no:"3조",who:"",names:["김태현","정윤석","박홍준","안재현","안재우","이도현","김지민",null]},
-    {no:"4조",who:"",names:["신영준","이태연","김기범","정희석","서은빈","최우석","류지훈","신승호"]}
+    {no:"3조",who:"",names:["신영준","이태연","김기범","정희석","서은빈","최우석","류지훈","신승호"]},
+    {no:"4조",who:"",names:["김태현","정윤석","박홍준","안재현","안재우","이도현","김지민",null]}
   ];
   var tug=[
     {no:"남",who:"출전 15명",names:["이재성","조원영","허정","박병찬","김예권","문찬혁","이창현","김남윤","오인영","이우진","천정호","조용진","이영준","도길록","이혜성"]},
