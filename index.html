@@ -496,6 +496,19 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
   if(!start){try{start=localStorage.getItem("festa-tab");}catch(e){}}
   var st=start&&document.getElementById(start); if(st) select(st); else select(tabs[0]);
 
+  // #tug, #relay, #all 링크로 들어오면 해당 탭을 열고 그 위치로 이동
+  function jumpToHash(){
+    var id=map[(location.hash||"").slice(1)]; if(!id) return;
+    select(document.getElementById(id));
+    var target=document.getElementById("g-h");
+    var go=function(){ target.scrollIntoView({block:"start"}); };
+    go(); requestAnimationFrame(go);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go);
+    window.addEventListener("load", go, {once:true});
+  }
+  jumpToHash();
+  window.addEventListener("hashchange", jumpToHash);
+
   // 시간표 → 구성별 안내 바로가기
   var go={"0900":["t-all","p-all"],"1000":["t-all","how-balloon"],"1015":["t-all","how-wind"],"1030":["t-relay","how-relay"],
           "1045":["t-tug","how-tug-am"],"1115":["t-all","how-tower"],"1330":["t-tug","how-tug-pm"]};
