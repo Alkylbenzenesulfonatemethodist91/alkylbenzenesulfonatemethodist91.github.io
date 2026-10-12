@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="2026 KIST 가을페스타 AI·로봇연구소 안내: 시간표, 천막 위치, 종목별 경기 방법과 출전 명단">
+<title>AI·로봇연구소 가을페스타</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#F4F2F7; --paper:#FFFFFF; --ink:#1F1A2B; --muted:#6E6680; --line:#E2DDEA;
+  --team:#4A2C82;
+  --team-soft:#ECE6F6;
+  --gold:#9C6511; --gold-soft:#FAEFD9; --gold-bright:#E3A43A;
+  --field:#4F7148; --field-soft:#E5EDE1;
+  --bld:#6E6680; --bld-soft:#E9E6EF;
+  --hero-bg:#4A2C82; --hero-fg:#FFFFFF;
+  --display:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#13111A; --paper:#1C1926; --ink:#ECE8F3; --muted:#A49DB3; --line:#302B3D;
+  --team:#B49CF0; --team-soft:#2A2340;
+  --gold:#E8B04F; --gold-soft:#33281A; --gold-bright:#E8B04F;
+  --field:#9CC08F; --field-soft:#1F2A1D;
+  --bld:#A49DB3; --bld-soft:#26222F;
+  --hero-bg:#2E1D52; --hero-fg:#F1ECFA; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#13111A; --paper:#1C1926; --ink:#ECE8F3; --muted:#A49DB3; --line:#302B3D;
+  --team:#B49CF0; --team-soft:#2A2340;
+  --gold:#E8B04F; --gold-soft:#33281A; --gold-bright:#E8B04F;
+  --field:#9CC08F; --field-soft:#1F2A1D;
+  --bld:#A49DB3; --bld-soft:#26222F;
+  --hero-bg:#2E1D52; --hero-fg:#F1ECFA; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.6;padding-inline:16px;padding-block:0 48px}
+.wrap{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{text-wrap:balance;margin:0}
+h2{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.01em}
+h3{font-size:16px;font-weight:700}
+p{margin:0}
+.eyebrow{font-size:12px;letter-spacing:.12em;font-weight:600;color:var(--muted)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+header.hero{margin-inline:-16px;padding:28px 16px 24px;background:var(--hero-bg);color:var(--hero-fg);border-bottom:4px solid var(--gold-bright)}
+.hero-in{max-width:920px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,6vw,46px);line-height:1.15}
+.hero .slogan{font-family:var(--display);font-weight:400;font-size:clamp(24px,5vw,34px);line-height:1.3;color:var(--gold-bright)}
+.slogan-label{display:inline-block;vertical-align:.35em;margin-right:10px;font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.08em;padding:2px 10px;border-radius:999px;border:1px solid var(--gold-bright);color:var(--gold-bright)}
+.facts{display:flex;flex-wrap:wrap;gap:8px}
+.fact{border:1px solid currentColor;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:500;opacity:.92}
+
+/* tent strip */
+.tent{display:flex;flex-direction:column;gap:10px}
+.strip{overflow-x:auto;padding-bottom:4px}
+.map{display:grid;grid-template-columns:64px 1fr;gap:6px;min-width:780px}
+.mid{display:grid;grid-template-columns:1fr 104px;gap:6px}
+.rcol{display:flex;flex-direction:column;gap:6px}
+.rcol .t{flex:1;display:flex;align-items:center;justify-content:center;padding:6px 4px}
+.rcol .t.hq{background:var(--team-soft);color:var(--team);font-weight:700;border-color:transparent}
+.field{display:flex;flex-direction:column;justify-content:space-between}
+.side{display:flex;flex-direction:column;gap:6px}
+.main{display:flex;flex-direction:column;gap:6px;min-width:0}
+.bld{border-radius:6px;background:var(--bld-soft);color:var(--bld);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;text-align:center;line-height:1.3;padding:8px 4px}
+.side .bld{flex:1;writing-mode:vertical-rl;letter-spacing:.2em}
+.side .truck{flex:1;border-radius:6px;border:1px dashed var(--line);color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;letter-spacing:.2em}
+.main > .bld{padding:12px 4px;font-size:14px}
+.stage-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--field)}
+.row{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px}
+.t{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 4px;text-align:center;font-size:12px;line-height:1.3;color:var(--muted)}
+.t.us{background:var(--team);border-color:var(--team);color:var(--paper);font-weight:700}
+.field{border-radius:8px;background:var(--field-soft);color:var(--field);text-align:center;padding:18px 12px 12px;font-weight:600;font-size:13px}
+.field b{display:inline-block;background:var(--ink);color:var(--paper);padding:2px 22px;border-radius:4px;font-size:13px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.tl li{display:grid;grid-template-columns:116px 1fr auto;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:start}
+.go{font:inherit;font-size:12px;font-weight:600;white-space:nowrap;border:1px solid var(--line);background:var(--paper);color:var(--team);padding:4px 10px;border-radius:999px;cursor:pointer}
+.go:hover{border-color:var(--team)}
+.go:focus-visible{outline:2px solid var(--team);outline-offset:2px}
+.howto.flash{box-shadow:0 0 0 3px var(--team)}
+@media (prefers-reduced-motion:no-preference){.howto{transition:box-shadow .4s}}
+.tl .time{font-family:var(--mono);font-size:14px;color:var(--muted);padding-top:1px}
+.tl .what{display:flex;flex-direction:column;gap:3px;min-width:0}
+.tl .what strong{font-weight:600}
+.tl .sub{font-size:13px;color:var(--muted)}
+.tl li.ours .time{color:var(--team);font-weight:600}
+.tl li.ours .what strong{color:var(--team)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;padding:1px 8px;border-radius:999px;margin-left:6px;vertical-align:2px}
+.tag.relay{background:var(--team-soft);color:var(--team)}
+.tag.tug{background:var(--gold-soft);color:var(--gold)}
+.tag.all{background:var(--field-soft);color:var(--field)}
+.gather{font-size:13px;font-weight:600;color:var(--gold)}
+.tl li.now{background:var(--team-soft);margin-inline:-10px;padding-inline:10px;border-radius:6px}
+
+/* tabs */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid var(--line);padding-bottom:10px}
+.tab{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--line);background:var(--paper);color:var(--ink);padding:7px 14px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--team);outline-offset:2px}
+.panel{display:flex;flex-direction:column;gap:20px;padding-top:6px}
+.keys{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.key{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.key .k{font-size:12px;color:var(--muted)}
+.key .v{font-size:18px;font-weight:700;color:var(--team)}
+ul.list{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+ul.list li::marker{color:var(--team)}
+.note{font-size:13px;color:var(--muted)}
+
+/* teams */
+.teams{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.team{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.team header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.team .no{font-family:var(--display);font-size:22px;color:var(--team)}
+.team .who{font-size:12px;color:var(--muted)}
+.names{display:flex;flex-wrap:wrap;gap:6px}
+.n{font-size:13px;padding:3px 9px;border-radius:5px;background:var(--bg);border:1px solid var(--line)}
+.n.both{background:var(--gold-soft);border-color:transparent;color:var(--gold);font-weight:600}
+.n.empty{border-style:dashed;color:var(--muted);background:transparent}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--muted);align-items:center}
+
+/* bracket path */
+.path{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.step{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:8px 12px;font-size:13px;display:flex;flex-direction:column;min-width:0}
+.step .s{font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.06em}
+.step.us{border-color:var(--team);box-shadow:inset 3px 0 0 var(--team)}
+.arrow{color:var(--muted);font-size:14px}
+
+/* how to play */
+.howto{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:18px;align-items:start;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:16px}
+.howto h3{margin-bottom:10px}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:26px 1fr;gap:10px;font-size:14px}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-size:15px;width:26px;height:26px;border-radius:50%;background:var(--team);color:var(--paper);display:flex;align-items:center;justify-content:center}
+.tip{margin-top:12px;font-size:13px;background:var(--gold-soft);color:var(--ink);border-radius:6px;padding:8px 12px}
+.tip b{color:var(--gold)}
+figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0}
+figure img{width:100%;height:auto;border-radius:6px;border:1px solid var(--line);background:#fff}
+figcaption{font-size:12px;color:var(--muted)}
+@media (max-width:720px){.howto{grid-template-columns:1fr}}
+
+/* checklist */
+.check{display:flex;flex-direction:column;gap:14px}
+.phase{display:grid;grid-template-columns:116px 1fr;gap:14px}
+.phase .when{font-family:var(--mono);font-size:13px;color:var(--team);font-weight:600}
+footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;display:flex;flex-direction:column;gap:12px}
+.contacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.contact{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:2px;font-size:13px;min-width:0;user-select:text}
+.contact strong{color:var(--team);font-size:14px}
+.contact .mono{color:var(--ink);overflow-wrap:anywhere}
+
+@media (max-width:560px){
+  .tl li,.phase{grid-template-columns:1fr;gap:4px}
+  .tl li .go{justify-self:start;margin-top:4px}
+}
+@media (prefers-reduced-motion:no-preference){.tab{transition:background .15s,color .15s}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-in">
+    <span class="eyebrow" style="color:inherit;opacity:.8">2026 KIST 가을페스타 · 다시! 우리! KIST Spirit!</span>
+    <h1>AI·로봇연구소</h1>
+    <p class="slogan"><span class="slogan-label">슬로건</span>생각은 AI처럼, 행동은 로봇처럼!</p>
+    <div class="facts">
+      <span class="fact">10월 16일(금) 09:00–16:00</span>
+      <span class="fact">KIST 잔디마당</span>
+      <span class="fact">팀컬러 다크퍼플</span>
+      <span class="fact">에어사다리 A조 6번</span>
+      <span class="fact">줄다리기 1번</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="tent" aria-labelledby="tent-h">
+    <h2 id="tent-h">우리 천막 위치</h2>
+    <p>무대와 국제협력관을 마주 보는 천막 줄, <strong>강릉분원과 연구융합지원 사이</strong>입니다. 본관 쪽에는 푸드트럭이 늘어서 있습니다. 등록과 선수 집결 모두 이 천막 앞에서 합니다.</p>
+    <div class="strip">
+     <div class="map">
+      <div class="side" aria-hidden="true"><span class="bld">본관</span><span class="truck">푸드트럭</span></div>
+      <div class="main">
+      <div class="row" role="list" aria-label="무대 맞은편 천막 줄">
+        <div class="t" role="listitem">첨단소재</div>
+        <div class="t" role="listitem">차세대반도체</div>
+        <div class="t" role="listitem">청정수소융합</div>
+        <div class="t" role="listitem">기후환경</div>
+        <div class="t" role="listitem">강릉분원</div>
+        <div class="t us" role="listitem">AI·로봇</div>
+        <div class="t" role="listitem">연구융합지원</div>
+        <div class="t" role="listitem">전북분원</div>
+      </div>
+      <div class="mid">
+        <div class="field"><span style="padding-top:24px">잔디운동장 83m × 66m</span>
+          <div class="stage-row"><span>경품교환처 · 의무실</span><b>무대</b><span>시스템부스 · 상황실</span></div>
+        </div>
+        <div class="rcol" role="list" aria-label="오른쪽 천막 줄">
+          <div class="t" role="listitem">뇌과학</div>
+          <div class="t" role="listitem">바이오·메디컬</div>
+          <div class="t hq" role="listitem">본부석</div>
+          <div class="t" role="listitem">지속가능<br>미래기술</div>
+          <div class="t" role="listitem">연구지원<br>(행정)</div>
+        </div>
+      </div>
+      <div class="bld">국제협력관 (우리 천막 맞은편)</div>
+      </div>
+     </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tl-h">
+    <h2 id="tl-h">전체 시간표</h2>
+    <p class="note" style="margin-top:4px">총무복지팀 10/8 계획안 기준. 경기 시간은 현장 상황에 따라 바뀔 수 있습니다.</p>
+    <ol class="tl" id="timeline">
+      <li data-s="0900" data-e="0930"><span class="time">09:00–09:30</span><span class="what"><strong>등록</strong><span class="sub">AI·로봇 천막 앞 접수대 · 기념품 · 행운권</span></span></li>
+      <li data-s="0930" data-e="1000"><span class="time">09:30–10:00</span><span class="what"><strong>입장식 · 개회식 · 준비체조</strong><span class="sub">팀피켓 뒤로 도열</span></span></li>
+      <li data-s="1000" data-e="1015"><span class="time">10:00–10:15</span><span class="what"><strong>대형 애드벌룬 릴레이 <span class="tag all">전원</span></strong><span class="sub">12팀 동시 · 3라운드</span></span></li>
+      <li data-s="1015" data-e="1030"><span class="time">10:15–10:30</span><span class="what"><strong>바람잡는 특공대 <span class="tag all">50명</span></strong><span class="sub">도열 인원 중 현장 선발</span></span></li>
+      <li class="ours" data-s="1030" data-e="1045"><span class="time">10:30–10:45</span><span class="what"><strong>에어사다리 릴레이 <span class="tag relay">선수 31</span></strong><span class="sub">A조 예선 6팀 동시 → 조별 상위 3팀 결승</span><span class="gather">10:20까지 천막 앞 집결</span></span></li>
+      <li class="ours" data-s="1045" data-e="1115"><span class="time">10:45–11:15</span><span class="what"><strong>줄다리기 예선 · 준준결승 <span class="tag tug">선수 30</span></strong><span class="sub">예선 1경기 vs 연구융합지원 · 3줄 동시 · 단판</span><span class="gather">10:40까지 천막 앞 집결</span></span></li>
+      <li data-s="1115" data-e="1130"><span class="time">11:15–11:30</span><span class="what"><strong>비전탑 쌓기 <span class="tag all">전원</span></strong><span class="sub">60주년 메시지 포함</span></span></li>
+      <li data-s="1130" data-e="1330"><span class="time">11:30–13:30</span><span class="what"><strong>점심 · 푸드트럭 · 미니게임 부스</strong><span class="sub">축구다트 · 핑퐁토스 · 3단농구 · 해머게임 · 도전 스틱잡기 · 스톱워치</span></span></li>
+      <li class="ours" data-s="1330" data-e="1400"><span class="time">13:30–14:00</span><span class="what"><strong>줄다리기 준결승 · 결승 <span class="tag tug">오전 통과 시</span></strong><span class="sub">부전승 결정전 "대왕 제기차기" 팀별 대표 4명</span><span class="gather">13:20까지 메인무대 앞 집결</span></span></li>
+      <li data-s="1400" data-e="1500"><span class="time">14:00–15:00</span><span class="what"><strong>무대 이벤트</strong><span class="sub">OX퀴즈 · 학연생 밴드 · 스크린 이벤트 · 출연연 연합밴드</span></span></li>
+      <li data-s="1500" data-e="1600"><span class="time">15:00–16:00</span><span class="what"><strong>시상식 · 행운권 추첨 · 폐회</strong><span class="sub">종합우승 1·2·3등 · 우승기 수령</span></span></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="g-h">
+    <h2 id="g-h">구성별 안내</h2>
+    <div class="tabs" role="tablist" aria-label="구성별 안내" style="margin-top:12px">
+      <button class="tab" role="tab" id="t-all" aria-controls="p-all" aria-selected="true">참석자 전체</button>
+      <button class="tab" role="tab" id="t-relay" aria-controls="p-relay" aria-selected="false">에어사다리</button>
+      <button class="tab" role="tab" id="t-tug" aria-controls="p-tug" aria-selected="false">줄다리기</button>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-all" aria-labelledby="t-all">
+      <div class="keys">
+        <div class="key"><span class="k">등록</span><span class="v mono">09:00–09:30</span></div>
+        <div class="key"><span class="k">참석 응답 (10/8)</span><span class="v">137명</span></div>
+        <div class="key"><span class="k">행운권 추첨</span><span class="v mono">15:00</span></div>
+        <div class="key"><span class="k">커스텀 매트</span><span class="v">14매</span></div>
+      </div>
+      <ul class="list">
+        <li><strong>09:30 전에 천막 앞에서 등록해 주세요.</strong> 명단 확인 후 기념품과 행운권을 드립니다. 09:30 이후에는 무대 우측 경품교환처에서 등록합니다.</li>
+        <li>행운권은 반으로 잘라 한쪽은 본인이 갖고, 한쪽은 연구소 추첨함에 넣습니다. 15시 폐회 때 추첨합니다.</li>
+        <li>애드벌룬 릴레이와 비전탑 쌓기는 도열한 인원 전원이 참여합니다. 바람잡는 특공대 50명은 현장에서 뽑습니다.</li>
+        <li>커스텀 매트(1.4m × 1.4m)는 참석 책임연구원 연구실별로 1매씩 천막 앞에 깔아 둡니다.</li>
+        <li><strong>당일 푸드코트에서는 법인카드를 쓸 수 없습니다.</strong></li>
+      </ul>
+      <h3>모두 함께하는 종목</h3>
+      <div class="howto">
+        <div>
+          <h3 id="how-balloon">대형 애드벌룬 릴레이 <span class="tag all">10:00 · 전원</span></h3>
+          <ol class="steps">
+            <li><span>도열한 인원 전원이 팀 줄 사이로 대형 애드벌룬 공을 굴립니다.</span></li>
+            <li><span>공이 반환점을 찍고 돌아오면 한 라운드가 끝납니다.</span></li>
+            <li><span>12팀이 동시에 3라운드를 치르고, 도착 순위를 합산해 순위를 정합니다.</span></li>
+          </ol>
+        </div>
+        <figure>
+          <img src="img/balloon.jpg" alt="무대 앞 출발선에서 12팀이 줄지어 서서 대형 애드벌룬 공을 굴리는 배치도와 참고 사진" loading="lazy" width="1200" height="516">
+          <figcaption>경기장 배치와 참고 사진 · 총무복지팀 계획안</figcaption>
+        </figure>
+      </div>
+      <div class="howto">
+        <div>
+          <h3 id="how-wind">바람잡는 특공대 <span class="tag all">10:15 · 50명</span></h3>
+          <ol class="steps">
+            <li><span>도열 인원 중 50명이 가로세로 8m 통천의 가장자리를 잡습니다.</span></li>
+            <li><span>통천을 들어 올려 바람을 가둔 뒤 그대로 앉습니다.</span></li>
+            <li><span>사회자 지령(예: 안경 쓴 사람 빠지기)에 따라 인원이 줄어듭니다.</span></li>
+            <li><span>마지막 단계에서 통천이 가장 높이 부풀어 있는 팀이 이깁니다.</span></li>
+          </ol>
+        </div>
+        <figure>
+          <img src="img/wind.jpg" alt="12팀이 각자 색 통천을 들고 바람을 가두는 배치도와 참고 사진" loading="lazy" width="1200" height="543">
+          <figcaption>경기장 배치와 참고 사진 · 총무복지팀 계획안</figcaption>
+        </figure>
+      </div>
+      <div class="howto">
+        <div>
+          <h3 id="how-tower">비전탑 쌓기 <span class="tag all">11:15 · 전원</span></h3>
+          <ol class="steps">
+            <li><span>팀마다 커다란 비닐 안에 풍선을 불어 넣어 탑을 만듭니다.</span></li>
+            <li><span>12팀이 동시에, 정해진 문구 순서대로 탑을 세웁니다.</span></li>
+            <li><span>제한시간 안에 가장 높이 세운 팀이 이깁니다.</span></li>
+          </ol>
+        </div>
+        <figure>
+          <img src="img/tower.jpg" alt="12팀이 풍선을 채운 비닐 탑을 세우는 배치도와 참고 사진" loading="lazy" width="1200" height="546">
+          <figcaption>경기장 배치와 참고 사진 · 총무복지팀 계획안</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-relay" aria-labelledby="t-relay" hidden>
+      <div class="keys">
+        <div class="key"><span class="k">경기</span><span class="v mono">10:30</span></div>
+        <div class="key"><span class="k">집결</span><span class="v mono">10:20</span></div>
+        <div class="key"><span class="k">우리 조</span><span class="v">A조 6번</span></div>
+        <div class="key"><span class="k">구성</span><span class="v">8명 × 4조</span></div>
+      </div>
+      <p>8명이 에어사다리를 함께 메고 반환점을 돌아와 다음 조에 넘기는 릴레이입니다. A조 6팀(기후환경 · 첨단소재 · 뇌과학 · 연구융합지원 · 연구지원(행정) · AI·로봇)이 동시에 예선을 치르고, 조별 상위 3팀이 결승에 오릅니다. 배점은 1위 100점, 2위 80점, 3위 60점, 4~12위 40점입니다.</p>
+      <div class="howto">
+        <div>
+          <h3 id="how-relay">경기 방법</h3>
+          <ol class="steps">
+            <li><span>8명이 에어사다리 칸에 한 명씩 들어가 사다리를 함께 듭니다.</span></li>
+            <li><span>출발 신호와 함께 앞쪽 반환점(콘)을 돌아 출발선으로 돌아옵니다.</span></li>
+            <li><span>돌아오면 다음 조에 사다리를 넘깁니다. 1조 → 2조 → 3조 → 4조 순서입니다.</span></li>
+            <li><span>4조가 가장 먼저 출발선을 통과한 팀이 이깁니다. A조 6팀이 동시에 뛰고, 상위 3팀이 결승에 오릅니다.</span></li>
+          </ol>
+          <p class="tip"><b>팁</b> 8명이 발을 맞추는 게 속도보다 중요합니다. "하나, 둘" 구령을 정해 두고, 키가 비슷한 사람끼리 앞뒤로 서면 사다리가 덜 흔들립니다.</p>
+        </div>
+        <figure>
+          <img src="img/relay-plan.jpg" alt="출발선 앞 6개 레인에서 각 팀이 에어사다리를 메고 반환점 콘을 돌아오는 경기 배치도와 참고 사진" loading="lazy" width="1200" height="537">
+          <figcaption>경기장 배치와 참고 사진 · 총무복지팀 계획안</figcaption>
+        </figure>
+      </div>
+      <div class="legend"><span class="n both">이름</span> 줄다리기도 출전 · 1·2조에서 먼저 뛰고 줄다리기로 이동 <span class="n empty">공석</span> 충원 예정</div>
+      <div class="teams" id="relay-teams"></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="p-tug" aria-labelledby="t-tug" hidden>
+      <div class="keys">
+        <div class="key"><span class="k">오전 경기</span><span class="v mono">10:45</span></div>
+        <div class="key"><span class="k">오전 집결</span><span class="v mono">10:40</span></div>
+        <div class="key"><span class="k">오후 경기 (오전 통과 시)</span><span class="v mono">13:30</span></div>
+        <div class="key"><span class="k">오후 집결 · 메인무대 앞</span><span class="v mono">13:20</span></div>
+        <div class="key"><span class="k">우리 번호</span><span class="v">1번</span></div>
+        <div class="key"><span class="k">출전</span><span class="v">남 15 · 여 15</span></div>
+      </div>
+      <div class="path" aria-label="우리 연구소 대진 경로">
+        <div class="step us"><span class="s">예선 1경기</span>AI·로봇 vs 연구융합지원</div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step"><span class="s">준준결승 1</span>vs 뇌과학 / 차세대반도체 승자</div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step"><span class="s">13:30 부전승 결정전</span>대왕 제기차기 (대표 4명)</div>
+        <span class="arrow" aria-hidden="true">→</span>
+        <div class="step"><span class="s">준결승 · 결승</span>1위 결승 직행, 2·3위 준결승</div>
+      </div>
+      <p class="note">배점은 우승 100점, 준우승 80점, 3위 60점, 4~12위 40점입니다. 릴레이 겸 출전자 9명은 1·2조를 마치는 대로 합류합니다.</p>
+      <div class="howto">
+        <div>
+          <h3 id="how-tug-am">경기 방법 · 오전 예선</h3>
+          <ol class="steps">
+            <li><span>경기장 가운데 줄 3개가 놓이고, 팀은 줄 양옆에서 대기합니다.</span></li>
+            <li><span>예선 1회차는 줄 3개에서 3경기가 동시에 열립니다. 우리는 1경기 줄에서 연구융합지원과 30 대 30으로 맞붙습니다.</span></li>
+            <li><span>정해진 시간 동안 줄을 더 많이 끌어온 팀이 이기는 단판 승부입니다.</span></li>
+            <li><span>이기면 바로 준준결승을 치르고, 준준결승까지 이긴 3팀이 오후 결승에 오릅니다.</span></li>
+          </ol>
+        </div>
+        <figure>
+          <img src="img/tug-prelim.jpg" alt="무대 앞에 줄 3개가 나란히 놓이고 양쪽에서 팀이 줄을 당기는 예선 배치도와 참고 사진" loading="lazy" width="1200" height="530">
+          <figcaption>예선 배치와 참고 사진 · 총무복지팀 계획안</figcaption>
+        </figure>
+      </div>
+      <div class="howto">
+        <div>
+          <h3 id="how-tug-pm">경기 방법 · 오후 결승</h3>
+          <ol class="steps">
+            <li><span>오전을 통과한 3팀이 13:30 메인무대 앞에 모입니다.</span></li>
+            <li><span>팀별 대표 4명이 "대왕 제기차기"로 부전승 결정전을 치릅니다.</span></li>
+            <li><span>결정전 1위는 결승으로 바로 가고, 2위와 3위가 준결승을 합니다.</span></li>
+            <li><span>결정전 1위와 준결승 승리 팀이 결승에서 우승을 가립니다.</span></li>
+          </ol>
+          <p class="tip"><b>팁</b> 제기차기 대표 4명은 오전 경기 전에 미리 정해 두면 오후에 바로 나갈 수 있습니다.</p>
+        </div>
+        <figure>
+          <img src="img/tug-final.jpg" alt="무대 앞에서 부전승 게임을 한 뒤 줄 하나로 결승을 치르는 배치도와 참고 사진" loading="lazy" width="1200" height="554">
+          <figcaption>결승 배치와 참고 사진 · 총무복지팀 계획안 (그림 속 해머치기는 10/8 계획에서 대왕 제기차기로 바뀌었습니다)</figcaption>
+        </figure>
+      </div>
+      <div class="teams" id="tug-teams"></div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p><strong style="color:var(--team)">문의</strong> 종목별 단톡방이나 간사 허시환 · 이태엽에게 남겨 주세요.</p>
+    <p>10월 12일 기준. 집결 시각과 장소가 바뀌면 종목별 단톡방에 먼저 공지합니다.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var relay=[
+    {no:"1조",who:"",names:["김웅배","유승빈","김진호","김민준","김예솔","이태림","전제찬","김수빈"]},
+    {no:"2조",who:"",names:["이재성","허정","김예권","문찬혁","이한철","장남선","박병찬","이창현"]},
+    {no:"3조",who:"",names:["김태현","정윤석","박홍준","안재현","안재우","이도현","김지민",null]},
+    {no:"4조",who:"",names:["신영준","이태연","김기범","정희석","서은빈","최우석","류지훈","신승호"]}
+  ];
+  var tug=[
+    {no:"남",who:"출전 15명",names:["이재성","조원영","허정","박병찬","김예권","문찬혁","이창현","김남윤","오인영","이우진","천정호","조용진","이영준","도길록","이혜성"]},
+    {no:"여",who:"출전 15명",names:["김지연","김수지","장우정","손승희","장유선","유수경","박서윤","윤세은","신수현","김수빈","이수진","김예솔","이태림","오수민","유진"]},
+    {no:"예비",who:"결원 시 교체",names:["김진호","이태연","정윤석","이한철","최원석","장승원","박지은"]}
+  ];
+  var both={"이재성":1,"허정":1,"박병찬":1,"김예권":1,"문찬혁":1,"이창현":1,"김수빈":1,"김예솔":1,"이태림":1};
+  function render(id,groups,markBoth){
+    var host=document.getElementById(id);
+    groups.forEach(function(g){
+      var card=document.createElement("article");card.className="team";
+      var real=g.names.filter(Boolean).length;
+      card.innerHTML='<header><span class="no"></span><span class="who"></span></header><div class="names"></div>';
+      card.querySelector(".no").textContent=g.no;
+      card.querySelector(".who").textContent=(g.who?g.who+" · ":"")+real+"명";
+      var box=card.querySelector(".names");
+      g.names.forEach(function(n){
+        var s=document.createElement("span");
+        if(n===null){s.className="n empty";s.textContent="공석";}
+        else{s.className="n"+(markBoth&&both[n]?" both":"");s.textContent=n;}
+        box.appendChild(s);
+      });
+      host.appendChild(card);
+    });
+  }
+  render("relay-teams",relay,true);
+  render("tug-teams",tug,true);
+
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab){
+    tabs.forEach(function(t){var on=t===tab;t.setAttribute("aria-selected",on?"true":"false");t.tabIndex=on?0:-1;document.getElementById(t.getAttribute("aria-controls")).hidden=!on;});
+    try{localStorage.setItem("festa-tab",tab.id);}catch(e){}
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener("click",function(){select(t);});
+    t.addEventListener("keydown",function(e){
+      if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();var n=tabs[(i+(e.key==="ArrowRight"?1:tabs.length-1))%tabs.length];n.focus();select(n);}
+    });
+  });
+  var map={relay:"t-relay",tug:"t-tug",all:"t-all"};
+  var start=map[(location.hash||"").slice(1)];
+  if(!start){try{start=localStorage.getItem("festa-tab");}catch(e){}}
+  var st=start&&document.getElementById(start); if(st) select(st); else select(tabs[0]);
+
+  // 시간표 → 구성별 안내 바로가기
+  var go={"0900":["t-all","p-all"],"1000":["t-all","how-balloon"],"1015":["t-all","how-wind"],"1030":["t-relay","how-relay"],
+          "1045":["t-tug","how-tug-am"],"1115":["t-all","how-tower"],"1330":["t-tug","how-tug-pm"]};
+  var smooth=!(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  [].forEach.call(document.querySelectorAll("#timeline li"),function(li){
+    var g=go[li.dataset.s]; if(!g) return;
+    var b=document.createElement("button"); b.type="button"; b.className="go"; b.textContent="안내 보기";
+    b.setAttribute("aria-label",li.querySelector("strong").childNodes[0].textContent.trim()+" 안내 보기");
+    b.addEventListener("click",function(){
+      select(document.getElementById(g[0]));
+      var el=document.getElementById(g[1]); var box=el.closest(".howto")||el;
+      box.scrollIntoView({behavior:smooth?"smooth":"auto",block:"start"});
+      box.classList.add("flash"); setTimeout(function(){box.classList.remove("flash");},1600);
+    });
+    li.appendChild(b);
+  });
+
+  // 행사 당일에는 지금 진행 중인 순서를 표시
+  var now=new Date();
+  if(now.getFullYear()===2026&&now.getMonth()===9&&now.getDate()===16){
+    var hm=("0"+now.getHours()).slice(-2)+("0"+now.getMinutes()).slice(-2);
+    [].forEach.call(document.querySelectorAll("#timeline li"),function(li){
+      if(hm>=li.dataset.s&&hm<li.dataset.e) li.classList.add("now");
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
