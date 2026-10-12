@@ -88,7 +88,18 @@ header.hero{margin-inline:-16px;padding:28px 16px 24px;background:var(--hero-bg)
 .side .truck{flex:1;border-radius:6px;border:1px dashed var(--line);color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;letter-spacing:.2em}
 .main > .bld{padding:12px 4px;font-size:14px}
 .bld.hall-bar{background:var(--hall-bg);color:var(--hall-fg);font-style:italic;font-weight:800;font-size:16px;letter-spacing:.1em;padding:14px 4px}
-.stage-row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:10px;font-size:12px;color:var(--field)}
+.field-name{padding-top:28px}
+.booths{display:grid;grid-template-columns:62px 1.2fr 1.5fr 1fr 1fr;gap:10px;align-items:end;margin-top:18px}
+.booth{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;font-weight:600;color:var(--ink);line-height:1.25;text-align:center}
+.booth .bx{order:2;display:flex;align-items:center;justify-content:center;width:100%;max-width:92px;height:26px;border-radius:4px;background:var(--paper);border:1px solid var(--line);color:var(--muted);font-size:11px;font-weight:600}
+.booth.photo .bx{width:26px;max-width:26px;background:var(--ink);border-color:var(--ink)}
+.field .booth.stage b{display:flex;align-items:center;justify-content:center;width:100%;height:46px;padding:0;border-radius:3px;font-family:var(--display);font-weight:400;font-size:20px;letter-spacing:.1em;background:repeating-linear-gradient(135deg,var(--ink) 0 7px,var(--muted) 7px 8px);color:var(--paper)}
+.row .t{position:relative;margin-bottom:18px}
+.row .t::after{content:"등록";position:absolute;left:50%;transform:translateX(-50%);bottom:-17px;font-size:10px;font-weight:700;line-height:1.4;background:var(--gold-bright);color:#3B2A06;padding:0 6px;border-radius:2px}
+.spots{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.spots li{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:13px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.spots li b{color:var(--team);font-size:13px}
+.spots li span{color:var(--muted)}
 .row{display:grid;grid-template-columns:repeat(8,minmax(74px,1fr));gap:6px}
 .t{border:1px solid var(--line);background:var(--paper);border-radius:6px;padding:8px 4px;text-align:center;font-size:12px;line-height:1.3;color:var(--muted)}
 .t.us{background:var(--team);border-color:var(--team);color:var(--paper);font-weight:700}
@@ -216,8 +227,14 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
         <div class="t" role="listitem">전북분원</div>
       </div>
       <div class="mid">
-        <div class="field"><span style="padding-top:24px">잔디운동장 83m × 66m</span>
-          <div class="stage-row"><span>경품교환처 · 의무실</span><b>무대</b><span>시스템부스 · 상황실</span></div>
+        <div class="field"><span class="field-name">잔디운동장 83m × 66m</span>
+          <div class="booths">
+            <div class="booth photo">인생네컷<span class="bx" aria-hidden="true"></span></div>
+            <div class="booth">경품교환처 · 의무실<span class="bx">1동</span></div>
+            <div class="booth stage"><b>무대</b></div>
+            <div class="booth">시스템부스<span class="bx">1동</span></div>
+            <div class="booth">상황실<span class="bx">1동</span></div>
+          </div>
         </div>
         <div class="rcol" role="list" aria-label="오른쪽 천막 줄">
           <div class="t" role="listitem">뇌과학</div>
@@ -231,6 +248,14 @@ footer{font-size:12px;color:var(--muted);border-top:1px solid var(--line);paddin
       </div>
      </div>
     </div>
+    <ul class="spots" aria-label="주요 위치 안내">
+      <li><b>등록 · 각 천막 앞 접수대</b><span>09:00–09:30 명단 확인 후 기념품과 행운권 배부</span></li>
+      <li><b>경품교환처 · 의무실 · 무대 왼쪽</b><span>09:30 이후 등록, 행운권 문의, 다쳤을 때</span></li>
+      <li><b>인생네컷 · 경품교환처 옆</b><span>포토부스, 쉬는 시간에 자유롭게 이용</span></li>
+      <li><b>시스템부스 · 상황실 · 무대 오른쪽</b><span>행사 진행 운영과 경품 보관</span></li>
+      <li><b>본부석 · 오른쪽 천막 줄 가운데</b><span>행사 본부 천막(3동)</span></li>
+      <li><b>푸드트럭 · 본관 쪽</b><span>11:30–13:30 점심 시간 운영</span></li>
+    </ul>
   </section>
 
   <section aria-labelledby="tl-h">
