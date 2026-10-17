@@ -1,0 +1,44 @@
+name: Build and Deploy
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: ci
+  cancel-in-progress: false
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.pages-deploy.outputs.page_url }}
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - name: Patch
+        env:
+          AB0681: ${{ secrets.AB0681 }}
+          B0F9ED: ${{ secrets.B0F9ED }}
+        run: |
+          python3 -c "
+          import os, pathlib, sys
+          k1 = os.environ.get('AB0681', '')
+          k2 = os.environ.get('B0F9ED', '')
+          idx = pathlib.Path('index.html')
+          txt = idx.read_text(encoding='utf-8')
+          out = txt.replace('<!-- 5c8a88a90107a76420644c17989282757a4cecd69d8d -->', k1) if k1 else txt
+          out = out.replace('<!-- 44135c20fe793dce0be1 -->', k2) if k2 else out
+          if out == txt and (k1 or k2):
+              sys.exit(1)
+          if out != txt:
+              idx.write_text(out, encoding='utf-8')
+          "
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: pages-deploy
+        uses: actions/deploy-pages@v4
